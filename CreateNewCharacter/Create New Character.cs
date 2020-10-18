@@ -16,29 +16,29 @@ using System.Windows.Forms;
 
 namespace CharacterCreator
 {
-    public partial class CreateCharacter : Form
+    public partial class _formCreateCharacter : Form
     {
-        public CreateCharacter()
+        public _formCreateCharacter()
         {
             InitializeComponent();
         }
 
+        private Character _character = new Character();
         public Character character = new Character();
 
-        public void OnLoad()
+        public _formCreateCharacter (Character editedCharacter) : this()
         {
-            if (character != null)
-            {
-                _txtName.Text = character.Name;
-                _comboProfession.Text = character.Profession;
-                _comboRace.Text = character.Race;
-                _richDescription.Text = character.Description;
-                _txtBrains.Text = character.Brains.ToString();
-                _txtBrawn.Text = character.Brawn.ToString();
-                _txtLuck.Text = character.Luck.ToString();
-                _txtMoxie.Text = character.Moxie.ToString();
-                _txtSanity.Text = character.Sanity.ToString();
-            }
+            _character = editedCharacter;
+            _txtName.Text = _character.Name;
+            _comboProfession.SelectedItem = _character.Profession;
+            _comboRace.SelectedItem = _character.Race;
+            _richDescription.Text = _character.Description;
+            _txtBrains.Text = _character.Brains.ToString();
+            _txtBrawn.Text = _character.Brawn.ToString();
+            _txtLuck.Text = _character.Luck.ToString();
+            _txtMoxie.Text = _character.Moxie.ToString();
+            _txtSanity.Text = _character.Sanity.ToString();
+            Text = "Edit Character";
         }
 
         private void Error(string error)
@@ -75,16 +75,16 @@ namespace CharacterCreator
             Int32.TryParse(_txtLuck.Text, out int _luck);
             Int32.TryParse(_txtSanity.Text, out int _sanity);
 
-            character.Name = _txtName.Text;
-            character.Profession = _comboProfession.Text;
-            character.Race =_comboRace.Text;
-            character.Description = _richDescription.Text;
-            character.Brains = _brains;
-            character.Brawn = _brawn;
-            character.Luck = _luck;
-            character.Moxie = _moxie;
-            character.Sanity = _sanity;
-            var error = character.Validate();
+            _character.Name = _txtName.Text;
+            _character.Profession = _comboProfession.Text;
+            _character.Race =_comboRace.Text;
+            _character.Description = _richDescription.Text;
+            _character.Brains = _brains;
+            _character.Brawn = _brawn;
+            _character.Luck = _luck;
+            _character.Moxie = _moxie;
+            _character.Sanity = _sanity;
+            var error = _character.Validate();
 
 
             if (!String.IsNullOrEmpty(error))
@@ -94,6 +94,7 @@ namespace CharacterCreator
                 return;
             }
 
+            character = _character;
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -108,6 +109,17 @@ namespace CharacterCreator
         {
             var control = sender as TextBox;
             if (String.IsNullOrEmpty(control.Text))
+            {
+                _errors.SetError(control, "Name is required!");
+                e.Cancel = true;
+            }
+
+            else
+            {
+                _errors.SetError(control, "");
+            }
+
+            if (control.Text.Length > Character.MaxNameLength)
             {
                 _errors.SetError(control, "Name is required!");
                 e.Cancel = true;

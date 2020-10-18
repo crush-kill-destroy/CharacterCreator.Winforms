@@ -26,33 +26,73 @@ namespace CharacterCreator.Winforms
             _miExit.Click += OnExit;
             _miNewCharacter.Click += OnNewCharacter;
             _miAbout.Click += OnAbout;
+            _miDelete.Click += OnDelete;
+            _miEdit.Click += OnEdit;
         }
 
-        public MainForm(Character character) : this()
+        private void OnEdit(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(_character.Name))
+            {
+                var form = new _formCreateCharacter(_character);
+                var result = form.ShowDialog(this);
+
+                if (result == DialogResult.Cancel)
+                    return;
+
+                RefreshForm(_character);
+                RefreshRoster();
+            }
+        }
+
+        private void OnDelete(object sender, EventArgs e)
+        {
+            _character = null;
+            _labBrains.Text = "";
+            _labBrawn.Text = "";
+            _labLuck.Text = "";
+            _labSanity.Text = "";
+            _labMoxie.Text = "";
+            _richDescription.Text = "";
+            _lbRoster.SelectedItem = "";
+            _labRace.Text = "";
+            _labProfession.Text = "";
         }
 
         public Character _character = new Character();
 
         private void OnNewCharacter(object sender, EventArgs e)
         {
-            var form = new CreateCharacter();
+            var form = new _formCreateCharacter();
             var result = form.ShowDialog(this);
             
             if (result == DialogResult.Cancel)
                 return;
-            
-            _character = form.character;
-            _listName.Text = _character.Name;
-            _richDescription.Text = _character.Description;
-            _labBrawn.Text = _character.Brawn.ToString();
-            _labBrains.Text = _character.Brains.ToString();
-            _labMoxie.Text = _character.Moxie.ToString();
-            _labLuck.Text = _character.Luck.ToString();
-            _labSanity.Text = _character.Sanity.ToString();
-            _labProfession.Text = _character.Profession;
-            _labRace.Text = _character.Race;
 
+            _character = form.character;
+            RefreshForm(_character);
+            RefreshRoster();
+        }
+
+        private void RefreshForm(Character character)
+        {
+            _labBrains.Text = character.Brains.ToString();
+            _labBrawn.Text = character.Brawn.ToString();
+            _labMoxie.Text = character.Moxie.ToString();
+            _labSanity.Text = character.Sanity.ToString();
+            _labLuck.Text = character.Luck.ToString();
+            _labRace.Text = character.Race;
+            _labProfession.Text = character.Profession;
+            _richDescription.Text = character.Description;
+
+        }
+
+        private void RefreshRoster()
+        {
+            var roster = new BindingList<Character>();
+            roster.Add(_character);
+            _lbRoster.DataSource = roster;
+            _lbRoster.DisplayMember = "Name";
         }
 
         private void OnExit(object sender, EventArgs e)
@@ -67,24 +107,6 @@ namespace CharacterCreator.Winforms
             about.ShowDialog(this);
         }
         
-        private void OnSave(object sender, EventArgs e)
-        {
-            var button = sender as Button;
-            if (button == null)
-                return;
-
-            var character = new Character();
-            character.Name = _listName.Text;
-            character.Description = _richDescription.Text;
-            character.Brawn = character.ConvertStat(_labBrawn.Text);
-            character.Brains = character.ConvertStat(_labBrains.Text);
-            character.Moxie = character.ConvertStat(_labMoxie.Text);
-            character.Luck = character.ConvertStat(_labLuck.Text);
-            character.Sanity = character.ConvertStat(_labSanity.Text);
-            character.Profession = _labProfession.Text;
-            character.Race = _labRace.Text;
-
-        }
 
         private void Label1_Click(object sender, EventArgs e)
         {
@@ -113,6 +135,11 @@ namespace CharacterCreator.Winforms
         }
 
         private void lsdklf_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
         {
 
         }

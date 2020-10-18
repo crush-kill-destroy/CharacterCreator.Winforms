@@ -1,6 +1,6 @@
 ﻿namespace CharacterCreator
 {
-    partial class CreateCharacter
+    partial class _formCreateCharacter
     {
         /// <summary>
         ///  Required designer variable.
@@ -98,7 +98,7 @@
             // 
             // _richDescription
             // 
-            this._richDescription.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this._richDescription.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this._richDescription.Location = new System.Drawing.Point(22, 193);
             this._richDescription.Name = "_richDescription";
             this._richDescription.Size = new System.Drawing.Size(373, 103);
@@ -271,6 +271,7 @@
             // 
             // _buttonCancel
             // 
+            this._buttonCancel.CausesValidation = false;
             this._buttonCancel.Location = new System.Drawing.Point(243, 562);
             this._buttonCancel.Name = "_buttonCancel";
             this._buttonCancel.Size = new System.Drawing.Size(121, 42);
@@ -283,7 +284,7 @@
             // 
             this._errors.ContainerControl = this;
             // 
-            // CreateCharacter
+            // _formCreateCharacter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -312,7 +313,7 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CreateCharacter";
+            this.Name = "_formCreateCharacter";
             this.ShowIcon = false;
             this.Text = "Create New Character";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -330,8 +331,6 @@
         private System.Windows.Forms.RichTextBox _richDescription;
         public System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox _txtName;
-        private System.Windows.Forms.ComboBox _comboRace;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -346,6 +345,8 @@
         private System.Windows.Forms.Button _buttonSave;
         private System.Windows.Forms.Button _buttonCancel;
         private System.Windows.Forms.ErrorProvider _errors;
+        protected System.Windows.Forms.ComboBox _comboRace;
+        protected System.Windows.Forms.TextBox _txtName;
     }
 }
 

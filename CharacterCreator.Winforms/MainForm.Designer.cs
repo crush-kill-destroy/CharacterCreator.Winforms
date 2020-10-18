@@ -33,6 +33,9 @@
             this._miExit = new System.Windows.Forms.ToolStripMenuItem();
             this._miCharacter = new System.Windows.Forms.ToolStripMenuItem();
             this._miNewCharacter = new System.Windows.Forms.ToolStripMenuItem();
+            this._miEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this._miDelete = new System.Windows.Forms.ToolStripMenuItem();
             this._miHelp = new System.Windows.Forms.ToolStripMenuItem();
             this._miAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.lab1 = new System.Windows.Forms.Label();
@@ -52,7 +55,7 @@
             this._labRace = new System.Windows.Forms.Label();
             this._labProfession = new System.Windows.Forms.Label();
             this._richDescription = new System.Windows.Forms.RichTextBox();
-            this._listName = new System.Windows.Forms.ListBox();
+            this._lbRoster = new System.Windows.Forms.ListBox();
             this._msMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,7 +91,10 @@
             // _miCharacter
             // 
             this._miCharacter.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._miNewCharacter});
+            this._miNewCharacter,
+            this._miEdit,
+            this.toolStripSeparator1,
+            this._miDelete});
             this._miCharacter.Name = "_miCharacter";
             this._miCharacter.Size = new System.Drawing.Size(110, 29);
             this._miCharacter.Text = "&Charcacter";
@@ -99,6 +105,25 @@
             this._miNewCharacter.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this._miNewCharacter.Size = new System.Drawing.Size(213, 34);
             this._miNewCharacter.Text = "New";
+            // 
+            // _miEdit
+            // 
+            this._miEdit.Name = "_miEdit";
+            this._miEdit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this._miEdit.Size = new System.Drawing.Size(213, 34);
+            this._miEdit.Text = "Edit";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(210, 6);
+            // 
+            // _miDelete
+            // 
+            this._miDelete.Name = "_miDelete";
+            this._miDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+            this._miDelete.Size = new System.Drawing.Size(213, 34);
+            this._miDelete.Text = "Delete";
             // 
             // _miHelp
             // 
@@ -168,6 +193,7 @@
             // 
             // fsdjkl
             // 
+            this.fsdjkl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.fsdjkl.AutoSize = true;
             this.fsdjkl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.fsdjkl.Location = new System.Drawing.Point(12, 71);
@@ -178,6 +204,7 @@
             // 
             // sfdlhk
             // 
+            this.sfdlhk.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.sfdlhk.AutoSize = true;
             this.sfdlhk.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.sfdlhk.Location = new System.Drawing.Point(12, 106);
@@ -188,6 +215,7 @@
             // 
             // lsdklf
             // 
+            this.lsdklf.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lsdklf.AutoSize = true;
             this.lsdklf.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lsdklf.Location = new System.Drawing.Point(13, 39);
@@ -199,6 +227,7 @@
             // 
             // _lab3
             // 
+            this._lab3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this._lab3.AutoSize = true;
             this._lab3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this._lab3.Location = new System.Drawing.Point(12, 244);
@@ -213,88 +242,92 @@
             this._labBrawn.AutoSize = true;
             this._labBrawn.Location = new System.Drawing.Point(15, 178);
             this._labBrawn.Name = "_labBrawn";
-            this._labBrawn.Size = new System.Drawing.Size(26, 25);
+            this._labBrawn.Size = new System.Drawing.Size(17, 25);
             this._labBrawn.TabIndex = 7;
-            this._labBrawn.Text = "--";
+            this._labBrawn.Text = " ";
             // 
             // _labMoxie
             // 
             this._labMoxie.AutoSize = true;
             this._labMoxie.Location = new System.Drawing.Point(78, 178);
             this._labMoxie.Name = "_labMoxie";
-            this._labMoxie.Size = new System.Drawing.Size(26, 25);
+            this._labMoxie.Size = new System.Drawing.Size(17, 25);
             this._labMoxie.TabIndex = 7;
-            this._labMoxie.Text = "--";
+            this._labMoxie.Text = " ";
             // 
             // _labLuck
             // 
             this._labLuck.AutoSize = true;
             this._labLuck.Location = new System.Drawing.Point(144, 178);
             this._labLuck.Name = "_labLuck";
-            this._labLuck.Size = new System.Drawing.Size(26, 25);
+            this._labLuck.Size = new System.Drawing.Size(17, 25);
             this._labLuck.TabIndex = 7;
-            this._labLuck.Text = "--";
+            this._labLuck.Text = " ";
             // 
             // _labSanity
             // 
             this._labSanity.AutoSize = true;
             this._labSanity.Location = new System.Drawing.Point(204, 178);
             this._labSanity.Name = "_labSanity";
-            this._labSanity.Size = new System.Drawing.Size(26, 25);
+            this._labSanity.Size = new System.Drawing.Size(17, 25);
             this._labSanity.TabIndex = 7;
-            this._labSanity.Text = "--";
+            this._labSanity.Text = " ";
             // 
             // _labBrains
             // 
             this._labBrains.AutoSize = true;
             this._labBrains.Location = new System.Drawing.Point(78, 215);
             this._labBrains.Name = "_labBrains";
-            this._labBrains.Size = new System.Drawing.Size(26, 25);
+            this._labBrains.Size = new System.Drawing.Size(17, 25);
             this._labBrains.TabIndex = 7;
-            this._labBrains.Text = "--";
+            this._labBrains.Text = " ";
             // 
             // _labRace
             // 
+            this._labRace.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this._labRace.AutoSize = true;
             this._labRace.Location = new System.Drawing.Point(78, 106);
             this._labRace.Name = "_labRace";
-            this._labRace.Size = new System.Drawing.Size(33, 25);
+            this._labRace.Size = new System.Drawing.Size(17, 25);
             this._labRace.TabIndex = 7;
-            this._labRace.Text = "---";
+            this._labRace.Text = " ";
             // 
             // _labProfession
             // 
+            this._labProfession.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this._labProfession.AutoSize = true;
             this._labProfession.Location = new System.Drawing.Point(78, 71);
             this._labProfession.Name = "_labProfession";
-            this._labProfession.Size = new System.Drawing.Size(33, 25);
+            this._labProfession.Size = new System.Drawing.Size(17, 25);
             this._labProfession.TabIndex = 7;
-            this._labProfession.Text = "---";
+            this._labProfession.Text = " ";
             // 
             // _richDescription
             // 
+            this._richDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this._richDescription.Location = new System.Drawing.Point(15, 285);
             this._richDescription.Name = "_richDescription";
             this._richDescription.ReadOnly = true;
             this._richDescription.Size = new System.Drawing.Size(245, 97);
             this._richDescription.TabIndex = 8;
-            this._richDescription.Text = "(optional)";
+            this._richDescription.Text = " ";
             // 
-            // _listName
+            // _lbRoster
             // 
-            this._listName.FormattingEnabled = true;
-            this._listName.ItemHeight = 25;
-            this._listName.Location = new System.Drawing.Point(78, 39);
-            this._listName.Name = "_listName";
-            this._listName.Size = new System.Drawing.Size(182, 29);
-            this._listName.TabIndex = 9;
+            this._lbRoster.FormattingEnabled = true;
+            this._lbRoster.ItemHeight = 25;
+            this._lbRoster.Location = new System.Drawing.Point(78, 39);
+            this._lbRoster.Name = "_lbRoster";
+            this._lbRoster.Size = new System.Drawing.Size(182, 29);
+            this._lbRoster.TabIndex = 9;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(278, 394);
-            this.Controls.Add(this._listName);
+            this.Controls.Add(this._lbRoster);
             this.Controls.Add(this._richDescription);
             this.Controls.Add(this._labProfession);
             this.Controls.Add(this._labRace);
@@ -318,6 +351,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Character Creator";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this._msMenu.ResumeLayout(false);
             this._msMenu.PerformLayout();
             this.ResumeLayout(false);
@@ -351,7 +385,10 @@
         private System.Windows.Forms.RichTextBox _richDescription;
         private System.Windows.Forms.ToolStripMenuItem _miHelp;
         private System.Windows.Forms.ToolStripMenuItem _miAbout;
-        private System.Windows.Forms.ListBox _listName;
+        private System.Windows.Forms.ToolStripMenuItem _miEdit;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem _miDelete;
+        private System.Windows.Forms.ListBox _lbRoster;
     }
 }
 
