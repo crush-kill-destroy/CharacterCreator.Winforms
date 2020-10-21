@@ -1,6 +1,6 @@
 ﻿namespace CharacterCreator
 {
-    partial class _formCreateCharacter
+    partial class FormCreateCharacter
     {
         /// <summary>
         ///  Required designer variable.
@@ -284,7 +284,7 @@
             // 
             this._errors.ContainerControl = this;
             // 
-            // _formCreateCharacter
+            // FormCreateCharacter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -313,7 +313,7 @@
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "_formCreateCharacter";
+            this.Name = "FormCreateCharacter";
             this.ShowIcon = false;
             this.Text = "Create New Character";
             this.Load += new System.EventHandler(this.Form1_Load);

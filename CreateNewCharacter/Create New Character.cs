@@ -5,20 +5,15 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CharacterCreator
 {
-    public partial class _formCreateCharacter : Form
+    public partial class FormCreateCharacter : Form
     {
-        public _formCreateCharacter()
+        /// <description> This form creates a character</description>
+        public FormCreateCharacter()
         {
             InitializeComponent();
         }
@@ -26,7 +21,7 @@ namespace CharacterCreator
         private Character _character = new Character();
         public Character character = new Character();
 
-        public _formCreateCharacter (Character editedCharacter) : this()
+        public FormCreateCharacter (Character editedCharacter) : this()
         {
             _character = editedCharacter;
             _txtName.Text = _character.Name;

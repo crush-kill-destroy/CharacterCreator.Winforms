@@ -17,7 +17,7 @@ namespace CharacterCreator
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new _formCreateCharacter());
+            Application.Run(new FormCreateCharacter());
         }
     }
 }

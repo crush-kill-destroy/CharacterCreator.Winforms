@@ -9,6 +9,7 @@ namespace CharacterCreator
 {
     public class Character
     {
+        /// <description> This is a character for your standard Roll20 game. </description>
         public const int MaxNameLength = 20;
         public const int MaxDescriptionLength = 250;
         private string _name;
@@ -43,12 +44,6 @@ namespace CharacterCreator
         {
             get { return _race ?? ""; }
             set { _race = value; }
-        }
-
-        public int ConvertStat(string stat)
-        {
-            Int32.TryParse(stat, out var result);
-            return result;
         }
 
         public string Validate()

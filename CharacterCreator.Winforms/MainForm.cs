@@ -5,20 +5,14 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CharacterCreator;
 
 namespace CharacterCreator.Winforms
 {
     public partial class MainForm : Form
     {
+        /// <description> This is the main form that gets you to every other piece of the program to help you store your characters for your RPG. </description>
         public MainForm()
         {
             InitializeComponent();
@@ -34,7 +28,7 @@ namespace CharacterCreator.Winforms
         {
             if (!String.IsNullOrEmpty(_character.Name))
             {
-                var form = new _formCreateCharacter(_character);
+                var form = new FormCreateCharacter(_character);
                 var result = form.ShowDialog(this);
 
                 if (result == DialogResult.Cancel)
@@ -63,7 +57,7 @@ namespace CharacterCreator.Winforms
 
         private void OnNewCharacter(object sender, EventArgs e)
         {
-            var form = new _formCreateCharacter();
+            var form = new FormCreateCharacter();
             var result = form.ShowDialog(this);
             
             if (result == DialogResult.Cancel)
