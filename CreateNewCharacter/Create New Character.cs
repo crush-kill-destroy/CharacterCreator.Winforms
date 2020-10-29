@@ -12,7 +12,7 @@ namespace CharacterCreator
 {
     public partial class FormCreateCharacter : Form
     {
-        /// <description> This form creates a character</description>
+        /// <description> This form creates a character </description>
         public FormCreateCharacter()
         {
             InitializeComponent();
